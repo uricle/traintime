@@ -1,0 +1,16 @@
+{
+  "name": "subway",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/vue": "^2.0.0",
+    "typescript": "^2.7.1",
+    "vue": "^2.5.13"
+  }
+}
