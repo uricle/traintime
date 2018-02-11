@@ -1,5 +1,3 @@
-import Vue from 'vue';
-
 declare var times: { [key: string]: any };
 
 let thisapp: any;
