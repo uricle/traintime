@@ -2,15 +2,20 @@
   "name": "subway",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "watch": "webpack --watch"
   },
-  "author": "",
+  "author": "uricle",
   "license": "MIT",
   "devDependencies": {
     "@types/vue": "^2.0.0",
+    "ts-loader": "^3.5.0",
     "typescript": "^2.7.1",
-    "vue": "^2.5.13"
+    "vue": "^2.5.13",
+    "vue-class-component": "^6.1.2",
+    "webpack": "^3.11.0"
   }
 }

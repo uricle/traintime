@@ -6,20 +6,19 @@
     <link rel="stylesheet" type="text/css" href="traintime.css" />
     <title>{{title}}</title>
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script type="text/javascript" src="dist/app.js"></script>
     <script type="text/javascript" src="timetable.js"></script>
-    <!-- <script type="text/javascript" src="0701167201.js"></script> -->
-    <script type="text/javascript" src="index.js"></script>
+    <script type="text/javascript" src="0701167201.js"></script>
 </head>
 
 <body>
     <div id="app">
-        <span>
-            <button v-on:click="setTimetable('timetable.js')">中の島->麻生</button>
-            <button v-on:click="setTimetable('0701167201.js')">宮の沢->中洲橋</button>
+        <span v-for="(table, index) in timetables">
+            <button v-on:click="setTimetable(index)" target="index">{{table.shortname}}</button>
         </span>
         <span>
             <br/>
-            {{times.name}} [{{currenttime}}]
+            {{name}} [{{currenttime}}]
         </span>
         <br/> All:
         <input type="checkbox" v-model="all">
