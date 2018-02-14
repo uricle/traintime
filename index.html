@@ -35,8 +35,11 @@
                     └{{transfer.linename}} {{transfer.arrivalHour}}:{{transfer.arrivalMin}}着 {{transfer.rideHour}}:{{transfer.rideMin}}発 ({{transfer.waitMin}}分待ち)
                     <br/>
                     <span v-for="transfer2 in getTransferTime(transfer.linename,transfer.rideHour,transfer.rideMin)">
-                        │└{{transfer2.linename}} {{transfer2.arrivalHour}}:{{transfer2.arrivalMin}}着 {{transfer2.rideHour}}:{{transfer2.rideMin}}発 ({{transfer2.waitMin}}分待ち)
-                        <br/>
+                        <span v-bind:class="{nearest_time:transfer2.minimum}">
+                            │└{{transfer2.linename}} {{transfer2.arrivalHour}}:{{transfer2.arrivalMin}}着 {{transfer2.rideHour}}:{{transfer2.rideMin}}発
+                            ({{transfer2.waitMin}}分待ち)
+                            <br/>
+                        </span>
                     </span>
                 </span>
                 <div class="next-line" v-if="nextTime.ahour > 0">
@@ -46,7 +49,10 @@
                     └{{transfer.linename}} {{transfer.arrivalHour}}:{{transfer.arrivalMin}}着 {{transfer.rideHour}}:{{transfer.rideMin}}発 ({{transfer.waitMin}}分待ち)
                     <br/>
                     <span v-for="transfer2 in getTransferTime(transfer.linename,transfer.rideHour,transfer.rideMin)">
-                        │└{{transfer2.linename}} {{transfer2.arrivalHour}}:{{transfer2.arrivalMin}}着 {{transfer2.rideHour}}:{{transfer2.rideMin}}発 ({{transfer2.waitMin}}分待ち)
+                        <span v-bind:class="{nearest_time:transfer2.minimum}">
+                            │└{{transfer2.linename}} {{transfer2.arrivalHour}}:{{transfer2.arrivalMin}}着 {{transfer2.rideHour}}:{{transfer2.rideMin}}発
+                            ({{transfer2.waitMin}}分待ち)
+                        </span>
                         <br/>
                     </span>
                 </span>
@@ -57,12 +63,16 @@
         </span>
         <span v-if="hours.length">
             <table border="0">
-                <tr v-for="hour in hours" class="current-row">
-                    <td style="text-align: right">{{hour}}</td>
-                    <td>
-                        <span v-for="m in mins(hour)"> {{m}}</span>
-                    </td>
-                </tr>
+                <colgroup class="current-row"></colgroup>
+                <colgroup class="next-row"></colgroup>
+                <tbody>
+                    <tr v-for="hour in hours">
+                        <td style="text-align: right">{{hour}}</td>
+                        <td>
+                            <span v-for="m in mins(hour)"> {{m}}</span>
+                        </td>
+                    </tr>
+                </tbody>
             </table>
         </span>
         <span v-else>

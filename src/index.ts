@@ -19,6 +19,7 @@ type nextTrainInfo = {
     rideHour: number,
     rideMin: number,
     waitMin: number
+    minimum: boolean
 };
 declare var timetables: timetable[];
 declare var transfertable: transferInfo[];
@@ -175,7 +176,8 @@ class App extends Vue {
                 arrivalMin: 0,
                 rideHour: 0,
                 rideMin: 0,
-                waitMin: 0
+                waitMin: 0,
+                minimum: false
             };
             // 到着時刻
             const arrivalTime = new Date(baseTime);
@@ -209,6 +211,13 @@ class App extends Vue {
             const waitMilliseconds = nextTime.getTime() - arrivalTime.getTime();
             nextInfo.waitMin = Math.floor(waitMilliseconds / 1000 / 60);
             nextInfos.push(nextInfo);
+        });
+        const minTime = Math.min( ...nextInfos.map( x => x.waitMin ) );
+        nextInfos.forEach( m => {
+            if (m.waitMin === minTime) {
+                m.minimum = true;
+            }
+            console.log(`${m.waitMin} ${minTime} ${m.minimum}`);
         });
         return nextInfos;
     }
