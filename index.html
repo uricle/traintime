@@ -69,7 +69,7 @@
                     <tr v-for="hour in hours">
                         <td style="text-align: right">{{hour}}</td>
                         <td>
-                            <span v-for="m in mins(hour)"> {{m}}</span>
+                            <span v-for="m in mins(hour)" class="timetable"> {{m}}</span>
                         </td>
                     </tr>
                 </tbody>

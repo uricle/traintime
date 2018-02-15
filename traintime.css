@@ -6,7 +6,8 @@ body {
 table {
     font-size: 20px;
     background-color: black;
-    border-radius: 5px;
+    border-radius: 3px;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Yu Gothic", YuGothic, Verdana, Meiryo, "M+ 1p", sans-serif;
 }
 
 .active {
@@ -26,7 +27,7 @@ table {
 }
 
 .current-row {
-    background-color: #7aa;
+    background-color: #cfc;
     color: #fff;
 }
 .nearest_time {
@@ -46,4 +47,10 @@ table {
 
 .next-time {
     color: #006600;
+}
+.timetable {
+
+}
+.timetable:nth-child(2n+1) {
+    background-color: #eee;
 }
